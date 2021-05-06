@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<ui:composition template="../template.xhtml">
+    <ui:define name="template">
+        <h1>------ Edição de Integrante ------</h1>
+        <h:form>
+            <h:commandLink class="btn" action="listagemIntegrantes">Todos os Integrantes</h:commandLink> <br/>
+            <h:commandLink class="btn" action="listagemDataNascimento">Lista de integrantes por Data de Nascimento</h:commandLink> <br/>
+            <h:commandLink class="btn" action="buscaPorCPFIntegrantes">Pesquisa de Integrantes por CPF</h:commandLink> <br/>
+            <h:commandLink class="btn" action="/home.xhtml?faces-redirect=true">Home</h:commandLink> <br/>
+            <h:outputLabel for="nome" value="Nome" />
+            <h:inputText value="#{controladorIntegrante.integrante.nome}" id="nome"/>
+            <h:outputLabel for="data" value="Data de Nascimento" />
+            <h:inputText value="#{controladorIntegrante.integrante.dataDeNascimento}" converter="converterLocaldate" id="data"/>
+            <h:outputLabel for="cpf" value="CPF" />
+            <h:inputText value="#{controladorIntegrante.integrante.cpf}" converter="cpf.converter" id="cpf"/>
+            <h:commandButton id="salvar" styleClass="btn" value="Salvar" action="#{controladorIntegrante.atualizarIntegrante()}"/>
+        </h:form>
+    </ui:define>
+</ui:composition>
+</html>

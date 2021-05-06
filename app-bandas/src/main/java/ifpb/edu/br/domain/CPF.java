@@ -5,10 +5,10 @@ import javax.persistence.Embeddable;
 import java.io.Serializable;
 import java.util.Objects;
 
-//@Embeddable
+@Embeddable
 public class CPF implements Serializable {
     private static final int TAMANHO = 11;
-    //@Column(name = "cpf")
+    @Column(name = "cpf", unique= true)
     private String numero;
 
     public CPF() {
@@ -20,16 +20,6 @@ public class CPF implements Serializable {
 
     public boolean isValido() {
         return this.numero.length() == TAMANHO;
-    }
-
-    public String cpfFormatado() {
-        return String.format(
-                "%s.%s.%s-%s",
-                this.numero.substring(0,3),
-                this.numero.substring(3,6),
-                this.numero.substring(6,9),
-                this.numero.substring(9,11)
-        );
     }
 
     public String getNumero() {

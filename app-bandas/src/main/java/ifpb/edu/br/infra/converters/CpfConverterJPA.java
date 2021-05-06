@@ -12,7 +12,7 @@ public class CpfConverterJPA implements AttributeConverter<CPF,String> {
         if(cpf == null){
             return null;
         }
-        return cpf.cpfFormatado();
+        return cpf.getNumero();
     }
 
     @Override

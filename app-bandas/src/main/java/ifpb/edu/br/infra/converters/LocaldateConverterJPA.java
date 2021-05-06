@@ -7,7 +7,7 @@ import javax.persistence.Converter;
 import java.sql.Date;
 import java.time.LocalDate;
 
-@Converter(autoApply = true)
+@Converter(autoApply = false)
 public class LocaldateConverterJPA implements AttributeConverter<LocalDate, Date> {
 
 

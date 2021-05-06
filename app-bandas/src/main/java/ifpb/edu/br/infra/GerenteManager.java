@@ -6,12 +6,13 @@ import ifpb.edu.br.domain.Integrante;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import java.util.List;
 
 @Stateless
 public class GerenteManager {
 
-    @PersistenceContext(unitName = "Postgres")
+    @PersistenceContext(unitName = "default")
     private EntityManager em;
 
     public void novo(Gerente gerente){
@@ -19,7 +20,10 @@ public class GerenteManager {
     }
 
     public List<Gerente> todos(){
-        return null;
+        String jpql = "SELECT g FROM Gerente g";
+        TypedQuery<Gerente> query = em.createQuery(jpql, Gerente.class);
+        List<Gerente> resultList = query.getResultList();
+        return resultList;
     }
 
     public void atualizar(Gerente gerente){

@@ -6,16 +6,22 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
+import javax.inject.Named;
+import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
-@FacesConverter(value = "cpf.converter", forClass = CPF.class)
-public class CpfConverterFaces implements Converter {
+@Named
+@FacesConverter(value = "converterLocaldate")
+public class LocalDateConverterFaces implements Converter, Serializable {
     @Override
     public Object getAsObject(FacesContext facesContext, UIComponent uiComponent, String s) {
-        if(s == null){
+        if(s != null && s.trim().length() > 0 ){
+            return LocalDate.parse(s);
+        }else{
+            System.out.println("Erro palavra vazia");
             return null;
         }
-        CPF cpf = new CPF(s);
-        return cpf;
     }
 
     @Override
@@ -23,7 +29,6 @@ public class CpfConverterFaces implements Converter {
         if(o == null){
             return null;
         }
-        CPF cpf = (CPF) o;
-        return cpf.getNumero();
+        return o.toString();
     }
 }

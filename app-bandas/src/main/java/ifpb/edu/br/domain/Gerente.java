@@ -18,7 +18,7 @@ public class Gerente implements Serializable {
     private Banda banda;
     @Column
     private String email;
-    @Convert(converter = CpfConverterJPA.class)
+    @Embedded
     private CPF cpf = new CPF("");
 
     public Gerente() {

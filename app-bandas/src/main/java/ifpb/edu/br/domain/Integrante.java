@@ -19,8 +19,7 @@ public class Integrante implements Serializable {
     private String nome;
     @Convert(converter = LocaldateConverterJPA.class)
     private LocalDate dataDeNascimento;
-    //@Embedded
-    @Convert(converter = CpfConverterJPA.class)
+    @Embedded
     private CPF cpf = new CPF("");
 
     public Integrante() {
