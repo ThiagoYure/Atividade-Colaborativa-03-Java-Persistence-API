@@ -15,33 +15,35 @@ import java.util.List;
 public class ControladorGerente implements Serializable {
 
     @EJB
-    private GerenteManager manager;
-    private Gerente gerente;
+    private GerenteManager manager = new GerenteManager();
+    private Gerente gerente = new Gerente();
 
-    public String novoIntegrante(){
+    public String novoGerente(){
         if(this.gerente != null){
-            manager.novo(this.gerente);
+            this.manager.novo(this.gerente);
+            this.gerente = new Gerente();
         }else{
             System.out.println("erro");
         }
         return null;
     }
 
-    public String atualizarIntegrante(){
+    public String atualizarGerente(){
         if(this.gerente != null){
-            manager.atualizar(this.gerente);
+            this.manager.atualizar(this.gerente);
+            this.gerente = new Gerente();
         }else{
             System.out.println("erro");
         }
         return null;
     }
 
-    public String atualizarIntegranteLocal(Gerente novo){
+    public String atualizarGerenteLocal(Gerente novo){
         this.gerente = novo;
-        return "atualizacaoGerente";
+        return "edicaoGerente";
     }
 
-    public String excluirIntegrante(Gerente gerente){
+    public String excluirGerente(Gerente gerente){
         if(gerente != null){
             manager.excluir(gerente);
         }else{

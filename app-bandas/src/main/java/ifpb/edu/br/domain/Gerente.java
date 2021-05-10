@@ -14,8 +14,6 @@ public class Gerente implements Serializable {
     private int id;
     @Column
     private String nome;
-    //@OneToOne(mappedBy = "gerente")
-    private Banda banda;
     @Column
     private String email;
     @Embedded
@@ -27,7 +25,6 @@ public class Gerente implements Serializable {
     public Gerente(int id, String nome, Banda banda, String email, CPF cpf) {
         this.id = id;
         this.nome = nome;
-        this.banda = banda;
         this.email = email;
         this.cpf = cpf;
     }
@@ -46,14 +43,6 @@ public class Gerente implements Serializable {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public Banda getBanda() {
-        return banda;
-    }
-
-    public void setBanda(Banda banda) {
-        this.banda = banda;
     }
 
     public String getEmail() {
@@ -77,12 +66,12 @@ public class Gerente implements Serializable {
         if (this == o) return true;
         if (!(o instanceof Gerente)) return false;
         Gerente gerente = (Gerente) o;
-        return getId() == gerente.getId() && Objects.equals(getNome(), gerente.getNome()) && Objects.equals(getBanda(), gerente.getBanda()) && Objects.equals(getEmail(), gerente.getEmail()) && Objects.equals(getCpf(), gerente.getCpf());
+        return getId() == gerente.getId() && Objects.equals(getNome(), gerente.getNome()) && Objects.equals(getEmail(), gerente.getEmail()) && Objects.equals(getCpf(), gerente.getCpf());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getNome(), getBanda(), getEmail(), getCpf());
+        return Objects.hash(getId(), getNome(), getEmail(), getCpf());
     }
 
     @Override
@@ -90,7 +79,6 @@ public class Gerente implements Serializable {
         return "Gerente{" +
                 "id=" + id +
                 ", nome='" + nome + '\'' +
-                ", banda=" + banda +
                 ", email='" + email + '\'' +
                 ", cpf=" + cpf +
                 '}';

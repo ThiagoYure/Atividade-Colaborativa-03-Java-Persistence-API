@@ -11,6 +11,26 @@
         <h:form>
             <h:commandLink class="btn" action="cadastroGerente">Cadastro de Novo Gerente</h:commandLink> <br/>
             <h:commandLink class="btn" action="/home.xhtml?faces-redirect=true">Home</h:commandLink> <br/>
+            <h:dataTable var="gerente" value="#{controladorGerente.buscaTodosGerentes()}" class="striped highlight">
+                <h:column>
+                    <f:facet name="header">Nome</f:facet>
+                    #{gerente.nome}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Email</f:facet>
+                    #{gerente.email}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">CPF</f:facet>
+                    #{gerente.cpf.numero}
+                </h:column>
+                <h:column>
+                    <h:commandButton value="Excluir" action="#{controladorGerente.excluirGerente(gerente)}" class="btn"/>
+                </h:column>
+                <h:column>
+                    <h:commandButton value="Editar" action="#{controladorGerente.atualizarGerenteLocal(gerente)}" class="btn"/>
+                </h:column>
+            </h:dataTable>
         </h:form>
     </ui:define>
 </ui:composition>

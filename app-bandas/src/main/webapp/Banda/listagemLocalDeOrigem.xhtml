@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<ui:composition template="../template.xhtml">
+    <ui:define name="template">
+        <h1>------ Lista de Banda ------</h1>
+        <h3>(Local de Origem</h3>
+        <h:form>
+            <h:commandLink class="btn" action="/home.xhtml?faces-redirect=true">Home</h:commandLink> <br/>
+
+            <h:inputText value="#{controladorBanda.bandaPesquisada.localDeOrigem}" id="localOrigem"/>
+            <h:commandButton styleClass="btn" value="Buscar" action="#{controladorBanda.buscarPorLocalDeOrigem}"/>
+            <h:dataTable var="banda" value="#{controladorBanda.buscarPorLocalDeOrigem()}" class="striped highlight">
+                <h:column>
+                    <f:facet name="header">Nome</f:facet>
+                    #{banda.nomeFantasia}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Local de Origem</f:facet>
+                    #{banda.localDeOrigem}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Integrantes</f:facet>
+                    <ui:repeat var="integrante" value="#{banda.integrantes}">
+                        <h:outputLabel value="#{integrante.nome} "/><br/>
+                    </ui:repeat>
+                </h:column>
+                <h:column>
+                    <h:commandButton value="Excluir" action="#{controladorBanda.excluirBanda}" class="btn"/>
+                </h:column>
+                <h:column>
+                    <h:commandButton value="Editar" action="#{controladorBanda.atualizarBandaLocal(banda)}" class="btn"/>
+                </h:column>
+            </h:dataTable>
+        </h:form>
+    </ui:define>
+</ui:composition>
+</html>

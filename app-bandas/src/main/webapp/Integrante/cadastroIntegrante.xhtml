@@ -9,17 +9,17 @@
     <ui:define name="template">
         <h3>------ Cadastro de Novo Integrante ------</h3>
         <h:form>
-            <h:commandLink class="btn" action="listagemIntegrantes">Todos os Integrantes</h:commandLink> <br/>
-            <h:commandLink class="btn" action="listagemDataNascimento">Lista de integrantes por Data de Nascimento</h:commandLink> <br/>
-            <h:commandLink class="btn" action="buscaPorCPFIntegrantes">Pesquisa de Integrantes por CPF</h:commandLink> <br/>
             <h:commandLink class="btn" action="/home.xhtml?faces-redirect=true">Home</h:commandLink> <br/>
             <h:outputLabel for="nome" value="Nome" />
             <h:inputText value="#{controladorIntegrante.integrante.nome}" id="nome"/>
             <h:outputLabel for="data" value="Data de Nascimento" />
-            <h:inputText value="#{controladorIntegrante.integrante.dataDeNascimento}" converter="converterLocaldate" id="data"/>
+            <h:inputText placeholder="aaaa/mm/dd" value="#{controladorIntegrante.integrante.dataDeNascimento}" converter="converterLocaldate" id="data"/>
             <h:outputLabel for="cpf" value="CPF" />
             <h:inputText value="#{controladorIntegrante.integrante.cpf}" converter="cpf.converter" id="cpf"/>
             <h:commandButton id="cadastrar" styleClass="btn" value="Cadastrar" action="#{controladorIntegrante.novoIntegrante()}"/>
+            <h:commandLink class="btn" action="listagemIntegrantes">Todos os Integrantes</h:commandLink> <br/>
+            <h:commandLink class="btn" action="listagemDataNascimento">Lista de integrantes por Data de Nascimento</h:commandLink> <br/>
+            <h:commandLink class="btn" action="buscaPorCPFIntegrantes">Pesquisa de Integrantes por CPF</h:commandLink> <br/>
         </h:form>
     </ui:define>
 </ui:composition>

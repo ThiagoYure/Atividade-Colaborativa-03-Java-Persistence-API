@@ -31,6 +31,7 @@ public class GerenteManager {
     }
 
     public void excluir(Gerente gerente){
-        em.remove(gerente);
+        em.remove(em.find(Gerente.class,gerente.getId()));
     }
+
 }

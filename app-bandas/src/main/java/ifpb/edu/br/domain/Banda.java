@@ -1,15 +1,23 @@
 package ifpb.edu.br.domain;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
+@Entity
 public class Banda implements Serializable {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column
     private String localDeOrigem;
+    @Column
     private String nomeFantasia;
+    @OneToMany
     private List<Integrante> integrantes;
+    @OneToOne
     private Gerente gerente;
 
     public Banda() {

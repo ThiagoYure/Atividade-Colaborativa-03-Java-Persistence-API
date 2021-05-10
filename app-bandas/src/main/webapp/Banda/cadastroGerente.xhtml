@@ -11,6 +11,13 @@
         <h:form>
             <h:commandLink class="btn" action="listagemGerentes">Todos os Gerentes</h:commandLink> <br/>
             <h:commandLink class="btn" action="/home.xhtml?faces-redirect=true">Home</h:commandLink> <br/>
+            <h:outputLabel for="nome" value="Nome" />
+            <h:inputText value="#{controladorGerente.gerente.nome}" id="nome"/>
+            <h:outputLabel for="email" value="Email" />
+            <h:inputText placeholder="exemple@email.com" value="#{controladorGerente.gerente.email}" id="email"/>
+            <h:outputLabel for="cpf" value="CPF" />
+            <h:inputText value="#{controladorGerente.gerente.cpf}" converter="cpf.converter" id="cpf"/>
+            <h:commandButton id="cadastrar" styleClass="btn" value="Cadastrar" action="#{controladorGerente.novoGerente}"/>
         </h:form>
     </ui:define>
 </ui:composition>
